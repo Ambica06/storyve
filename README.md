@@ -55,3 +55,32 @@
 - **AI Models**: Stable Diffusion / DALL·E / GPT-based text understanding  
 - **Authentication**: Firebase Auth / Auth0  
 - **Hosting / Deployment**: Vercel / AWS  
+
+
+## Architecture Diagram
+
+```mermaid
+flowchart TD
+
+A[User] --> B[Frontend App\n(Web / Mobile Reader)]
+
+B --> C[API Gateway / Backend]
+
+C --> D[User Service\n(Auth, Profiles)]
+C --> E[Book Service\n(Book metadata, reading progress)]
+C --> F[Visual Generation Service]
+
+E --> G[(Database\nUsers, Books, Reading Progress)]
+
+F --> H[Text Analysis AI\nExtract characters, locations, scenes]
+H --> I[Visual Prompt Builder]
+
+I --> J[Image Generation Model\n(Stable Diffusion / DALL·E)]
+
+J --> K[Visual Storage\n(Image CDN / Object Storage)]
+
+K --> L[(Visual Database\nCharacter + Scene metadata)]
+
+B <-->|Fetch visuals + reading data| C
+
+L --> C
