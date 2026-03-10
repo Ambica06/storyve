@@ -62,25 +62,23 @@
 ```mermaid
 flowchart TD
 
-A[User] --> B[Frontend App\n(Web / Mobile Reader)]
+A[User] --> B[Frontend App]
+B --> C[Backend API]
 
-B --> C[API Gateway / Backend]
-
-C --> D[User Service\n(Auth, Profiles)]
-C --> E[Book Service\n(Book metadata, reading progress)]
+C --> D[User Service]
+C --> E[Book Service]
 C --> F[Visual Generation Service]
 
-E --> G[(Database\nUsers, Books, Reading Progress)]
+E --> G[(Database)]
 
-F --> H[Text Analysis AI\nExtract characters, locations, scenes]
-H --> I[Visual Prompt Builder]
+F --> H[Text Analysis AI]
+H --> I[Prompt Builder]
 
-I --> J[Image Generation Model\n(Stable Diffusion / DALL·E)]
+I --> J[Image Generation Model]
 
-J --> K[Visual Storage\n(Image CDN / Object Storage)]
+J --> K[Image Storage]
 
-K --> L[(Visual Database\nCharacter + Scene metadata)]
-
-B <-->|Fetch visuals + reading data| C
+K --> L[(Visual Metadata Database)]
 
 L --> C
+C --> B
