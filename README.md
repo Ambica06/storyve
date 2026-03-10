@@ -49,12 +49,20 @@
 
 ## Tech Stack
 
-- **Frontend**: React / React Native  
-- **Backend**: Node.js / FastAPI  
-- **Database**: PostgreSQL / Supabase  
-- **AI Models**: Stable Diffusion / DALL·E / GPT-based text understanding  
-- **Authentication**: Firebase Auth / Auth0  
-- **Hosting / Deployment**: Vercel / AWS  
+| Layer                   | Technology / Tools                                    | Purpose / Notes |
+|-------------------------|-------------------------------------------------------|----------------|
+| Frontend (iOS App)      | Swift + SwiftUI                                       | Native iOS UI for reading interface, galleries, overlays |
+| Async Handling          | Combine / async-await                                  | Smooth background updates and network calls |
+| Local Storage (Optional)| CoreData / Realm                                      | Cache reading progress and images locally |
+| Networking              | URLSession / Alamofire                                 | Communicate with backend APIs |
+| Backend API             | FastAPI (Python)                                      | Handles scene detection, AI requests, user/book management |
+| Background Tasks        | Celery + Redis                                        | Asynchronous image generation and lookahead scene processing |
+| Database                | PostgreSQL / Supabase                                 | Store users, books, reading progress, scene fingerprints, metadata |
+| Image Storage           | S3 / Supabase Storage                                 | Stores generated visuals and serves via CDN |
+| Scene Detection AI      | GPT-4 API                                             | Analyzes book text to detect scenes, characters, and locations |
+| Image Generation AI     | Stable Diffusion API / Nano Banana (prototype)        | Generates visuals for scenes and characters |
+| Caching / CDN           | Device cache + Cloud CDN                               | Fast image delivery to users |
+| Optional Realtime Updates| WebSockets / Push Notifications                        | Notify frontend when lookahead images are ready | 
 
 
 ## Architecture Diagram
@@ -83,3 +91,16 @@ K --> L[(Visual Metadata Database)]
 L --> C
 G --> C
 C --> B
+
+flowchart LR
+    A[User Reading Scene] --> B[Frontend Sends Scene Info to Backend]
+    B --> C[Backend API Receives Request]
+    C --> D[Enqueue Job in Task Queue]
+    D --> E[Background Worker Picks Up Job]
+    E --> F{Check if Scene Image Exists?}
+    F -- Yes --> G[Load Existing Image from Storage]
+    F -- No --> H[Generate Image via AI Model]
+    H --> I[Store Image & Metadata in Database / Storage]
+    G --> J[Notify Frontend Image is Ready]
+    I --> J
+    J --> K[Frontend Displays Image to User]
