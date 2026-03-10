@@ -62,23 +62,24 @@
 ```mermaid
 flowchart TD
 
-A[User] --> B[Frontend App]
+A[User] --> B[Frontend Reader App]
+
 B --> C[Backend API]
 
 C --> D[User Service]
 C --> E[Book Service]
 C --> F[Visual Generation Service]
 
-E --> G[(Database)]
+D --> G[(PostgreSQL / Supabase Database)]
+E --> G
 
 F --> H[Text Analysis AI]
 H --> I[Prompt Builder]
-
 I --> J[Image Generation Model]
 
 J --> K[Image Storage]
-
 K --> L[(Visual Metadata Database)]
 
 L --> C
+G --> C
 C --> B
