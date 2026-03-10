@@ -92,6 +92,7 @@ L --> C
 G --> C
 C --> B
 
+```mermaid
 flowchart LR
     A[User Reading Scene] --> B[Frontend Sends Scene Info to Backend]
     B --> C[Backend API Receives Request]
