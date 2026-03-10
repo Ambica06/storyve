@@ -92,6 +92,7 @@ L --> C
 G --> C
 C --> B
 
+## Flow Diagram
 ```mermaid
 flowchart LR
     A[User Reading Scene] --> B[Frontend Sends Scene Info to Backend]
