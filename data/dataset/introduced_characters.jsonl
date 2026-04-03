@@ -1,0 +1,173 @@
+{
+  "Alice": {
+    "age": "child",
+    "gender": "female",
+    "body_type": "slender",
+    "face": "innocent-looking",
+    "hair": "long, auburn",
+    "facial_hair": "",
+    "skin_tone": "fair"
+  },
+  "Mouse": {
+    "age": "Unknown",
+    "gender": "Male",
+    "body_type": "Small",
+    "face": "Sharp features",
+    "hair": "None mentioned",
+    "facial_hair": "None mentioned",
+    "skin_tone": "Pale"
+  },
+  "Dodo": {
+    "age": "",
+    "gender": "",
+    "body_type": "",
+    "face": "",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": ""
+  },
+  "Caterpillar": {
+    "age": "",
+    "gender": "male",
+    "body_type": "large, sitting on a mushroom",
+    "face": "sleepy-looking",
+    "hair": "",
+    "facial_hair": "mustache",
+    "skin_tone": ""
+  },
+  "Pigeon": {
+    "age": "",
+    "gender": "male",
+    "body_type": "",
+    "face": "",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": ""
+  },
+  "Footman": {
+    "age": "",
+    "gender": "male",
+    "body_type": "",
+    "face": "",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": ""
+  },
+  "March Hare": {
+    "age": "adult",
+    "gender": "male",
+    "body_type": "slender",
+    "face": "sly, mischievous",
+    "hair": "short, white",
+    "facial_hair": "goatee",
+    "skin_tone": "pale"
+  },
+  "The Hatter": {
+    "age": "middle-aged",
+    "gender": "male",
+    "body_type": "slim",
+    "face": "sly, slightly mad",
+    "hair": "messy, white",
+    "facial_hair": "goatee",
+    "skin_tone": "pale"
+  },
+  "Seven": {
+    "age": "Unknown",
+    "gender": "Male",
+    "body_type": "Slim",
+    "face": "Serious",
+    "hair": "Short and dark",
+    "facial_hair": "None",
+    "skin_tone": "Pale"
+  },
+  "Queen": {
+    "age": "middle-aged",
+    "gender": "female",
+    "body_type": "stout",
+    "face": "angry, with a stern expression",
+    "hair": "tightly curled, dark brown",
+    "facial_hair": "",
+    "skin_tone": "pale"
+  },
+  "Gardeners": {
+    "age": "middle-aged to older",
+    "gender": "male",
+    "body_type": "tall, thin",
+    "face": "",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": ""
+  },
+  "Duchess": {
+    "age": "middle-aged",
+    "gender": "female",
+    "body_type": "plump",
+    "face": "sharp, mischievous",
+    "hair": "short, dark",
+    "facial_hair": "",
+    "skin_tone": "pale"
+  },
+  "Queen of Hearts": {
+    "age": "middle-aged",
+    "gender": "female",
+    "body_type": "large, imposing",
+    "face": "angry-looking",
+    "hair": "short, red",
+    "facial_hair": "",
+    "skin_tone": "pale"
+  },
+  "Mock Turtle": {
+    "age": "adult",
+    "gender": "male",
+    "body_type": "slim, turtle-like",
+    "face": "sad, with large eyes full of tears",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": "pale"
+  },
+  "Gryphon": {
+    "age": "adult",
+    "gender": "male",
+    "body_type": "slim",
+    "face": "curious, with a hint of mischief",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": "fair"
+  },
+  "Snail": {
+    "age": "old",
+    "gender": "male",
+    "body_type": "slim",
+    "face": "worn",
+    "hair": "non-existent",
+    "facial_hair": "none",
+    "skin_tone": "mottled"
+  },
+  "Hatter": {
+    "age": "middle-aged",
+    "gender": "male",
+    "body_type": "slim",
+    "face": "witty, slightly disheveled",
+    "hair": "messy, white",
+    "facial_hair": "goatee",
+    "skin_tone": "pale"
+  },
+  "Lizard (Bill)": {
+    "age": "young",
+    "gender": "male",
+    "body_type": "small",
+    "face": "",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": ""
+  },
+  "She": {
+    "age": "",
+    "gender": "female",
+    "body_type": "",
+    "face": "",
+    "hair": "",
+    "facial_hair": "",
+    "skin_tone": ""
+  }
+}

@@ -1,6 +1,7 @@
 import requests
 import json
-from config.settings import OLLAMA_URL, MODEL_NAME, TEMPERATURE
+from config.constants import OLLAMA_URL
+from config.settings import MODEL_NAME, TEMPERATURE
 
 
 def extract_json(text):

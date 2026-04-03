@@ -1,5 +1,6 @@
 def scene_extraction_prompt(chunk):
-    return f"""
+    # Use a non-f-string template so the JSON braces don't require escaping.
+    template = """
 You are a scene extraction system for novels which will be used to generate images of the scene.
 
 Extract ONE visually clear scene from the text.
@@ -12,7 +13,7 @@ STRICT RULES:
 
 FORMAT:
 
-{{
+{
   "characters": [
     {
       "name": "",
@@ -32,17 +33,18 @@ FORMAT:
       }
     }
   ],
-  "setting": {{
+  "setting": {
     "location": "",
     "time": "",
     "lighting": ""
-  }},
+  },
   "action": "",
   "objects": [],
   "mood": "",
   "composition": ""
-}}
+}
 
 TEXT:
-{chunk}
+<<CHUNK>>
 """
+    return template.replace("<<CHUNK>>", chunk)
