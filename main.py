@@ -3,7 +3,7 @@ from src.pipeline.generate_dataset import process_book
 
 
 def main():
-    books = load_books("/Users/shoyodev/Projects/storyve/data/raw_books")
+    books = load_books("/Users/ambica/storyve/data/raw_books")
 
     for i, book in enumerate(books):
         print(f"Processing book {i+1}")

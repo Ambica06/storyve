@@ -14,11 +14,23 @@ FORMAT:
 
 {{
   "characters": [
-    {{
-      "description": "",
-      "emotion": "",
-      "pose": ""
-    }}
+    {
+      "name": "",
+      "static_traits": {
+        "age": "",
+        "gender": "",
+        "body_type": "",
+        "face": "",
+        "hair": "",
+        "facial_hair": "",
+        "skin_tone": "",
+      },
+      "dynamic_traits": {
+        "emotion": "",
+        "pose": "",
+        "action": ""
+      }
+    }
   ],
   "setting": {{
     "location": "",
