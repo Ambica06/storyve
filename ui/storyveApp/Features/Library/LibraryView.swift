@@ -11,6 +11,7 @@ struct LibraryView: View {
     private var books: [Book]
     
     @State private var showingImporter = false
+    @State private var importErrorMessage: String?
     
     let columns = [
         GridItem(.flexible()),
@@ -40,7 +41,11 @@ struct LibraryView: View {
                         ) {
                             
                             ForEach(books) { book in
-                                BookCard(book: book)
+                                NavigationLink {
+                                    ReaderView(book: book)
+                                } label: {
+                                    BookCard(book: book)
+                                }
                             }
                         }
                         .padding()
@@ -53,8 +58,21 @@ struct LibraryView: View {
                 isPresented: $showingImporter,
                 allowedContentTypes: [.epub]
             ) { result in
-                
+
                 handleImport(result)
+            }
+            .alert(
+                "Couldn't Import Book",
+                isPresented: Binding(
+                    get: { importErrorMessage != nil },
+                    set: { isPresented in
+                        if !isPresented { importErrorMessage = nil }
+                    }
+                )
+            ) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(importErrorMessage ?? "")
             }
         }
     }
@@ -146,6 +164,7 @@ struct LibraryView: View {
                 
             } catch {
                 print("Import failed:", error)
+                importErrorMessage = "This file may not be a valid EPUB. Please try a different book."
             }
         }
     }

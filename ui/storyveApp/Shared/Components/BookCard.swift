@@ -34,7 +34,7 @@ struct BookCard: View {
     private var coverView: some View {
         
         if let coverPath = book.coverPath,
-           let uiImage = UIImage(contentsOfFile: coverPath) {
+           let uiImage = UIImage(contentsOfFile: EPUBService.shared.resolveBooksPath(coverPath).path) {
             
             Image(uiImage: uiImage)
                 .resizable()
