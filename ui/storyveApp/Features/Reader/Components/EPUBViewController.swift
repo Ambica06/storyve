@@ -6,14 +6,21 @@
 //
 
 internal import UIKit
+import SwiftData
 import ReadiumShared
 import ReadiumNavigator
 
 final class EPUBViewController: UIViewController {
     private let book: Book
+    private let modelContext: ModelContext
+    private var navigator: EPUBNavigatorViewController?
 
-    init(book: Book) {
+    private(set) var publication: Publication?
+    var onPublicationLoaded: ((Publication) -> Void)?
+
+    init(book: Book, modelContext: ModelContext) {
         self.book = book
+        self.modelContext = modelContext
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -27,6 +34,13 @@ final class EPUBViewController: UIViewController {
         openBook()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let locator = navigator?.currentLocation {
+            persist(locator)
+        }
+    }
+
     private func openBook() {
         Task {
             do {
@@ -34,7 +48,14 @@ final class EPUBViewController: UIViewController {
 
                 let publication = try await EPUBService.shared.openPublication(at: fileURL)
 
-                let navigator = try EPUBNavigatorViewController(publication: publication, initialLocation: nil)
+                self.publication = publication
+                onPublicationLoaded?(publication)
+
+                let initialLocation = try book.locatorJSON.flatMap { try Locator(jsonString: $0) }
+
+                let navigator = try EPUBNavigatorViewController(publication: publication, initialLocation: initialLocation)
+                navigator.delegate = self
+                self.navigator = navigator
 
                 addChild(navigator)
 
@@ -53,5 +74,33 @@ final class EPUBViewController: UIViewController {
                 print("Failed to open EPUB:", error)
             }
         }
+    }
+
+    func navigate(to link: Link) {
+        Task { [weak self] in
+            await self?.navigator?.go(to: link, options: NavigatorGoOptions(animated: false))
+        }
+    }
+
+    func navigate(to locator: Locator) {
+        Task { [weak self] in
+            await self?.navigator?.go(to: locator, options: NavigatorGoOptions(animated: false))
+        }
+    }
+
+    private func persist(_ locator: Locator) {
+        book.locatorJSON = locator.jsonString
+        book.progress = locator.locations.totalProgression ?? book.progress
+        try? modelContext.save()
+    }
+}
+
+extension EPUBViewController: EPUBNavigatorDelegate {
+    func navigator(_ navigator: Navigator, locationDidChange locator: Locator) {
+        persist(locator)
+    }
+
+    func navigator(_ navigator: Navigator, presentError error: NavigatorError) {
+        print("Navigator error:", error)
     }
 }

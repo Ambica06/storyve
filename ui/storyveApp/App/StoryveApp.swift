@@ -11,7 +11,8 @@ import SwiftData
 struct StoryveApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Book.self
+            Book.self,
+            Bookmark.self
         ])
         
         let configuration = ModelConfiguration(

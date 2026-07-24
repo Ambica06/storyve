@@ -20,8 +20,9 @@ final class Book {
     var coverPath: String?
     
     var progress: Double
+    var locatorJSON: String?
     var createdAt: Date
-    
+
     init(
         title: String,
         author: String,
@@ -35,6 +36,7 @@ final class Book {
         self.epubPath = epubPath
         self.coverPath = coverPath
         self.progress = progress
+        self.locatorJSON = nil
         self.createdAt = Date()
     }
 }
