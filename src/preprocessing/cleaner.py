@@ -1,3 +1,5 @@
+from bs4 import BeautifulSoup
+
 def clean_gutenberg_text(text):
     start_marker = "*** START OF"
     end_marker = "*** END OF"
